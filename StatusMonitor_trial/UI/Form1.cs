@@ -30,7 +30,7 @@ namespace StatusMonitor_trial
             var currentUser = SessionManager.Instance.CurrentUser;
             if (currentUser.Role == "Operator")
             {
-                menuStrip1.Visible = false; 
+                menuStrip1.Visible = false;
             }
             else
             {
@@ -95,7 +95,7 @@ namespace StatusMonitor_trial
         private (int count, List<string> items) ParseResponse(string response)
         {
             string[] parts = response
-                .Replace("<CR>", "")  
+                .Replace("<CR>", "")
                 .Split('|', StringSplitOptions.RemoveEmptyEntries)
                 .Select(p => p.Trim('\r', '\n'))
                 .ToArray();
@@ -299,7 +299,7 @@ namespace StatusMonitor_trial
                         parts.Add(cmbField2.SelectedItem.ToString() + "=" + txtField2.Text);
 
                     if (cmbField3.SelectedItem != null)
-                        parts.Add(cmbField3.SelectedItem.ToString() + "=" + cmbField4.SelectedItem.ToString());
+                        parts.Add(cmbField3.SelectedItem.ToString() + "=" + txtField5.Text);
 
                     if (cmbField5.SelectedItem != null)
                         parts.Add(cmbField5.SelectedItem.ToString() + "=" + txtField3.Text);
@@ -307,8 +307,8 @@ namespace StatusMonitor_trial
                     if (cmbField6.SelectedItem != null)
                         parts.Add(cmbField6.SelectedItem.ToString() + "=" + txtField4.Text);
 
-   
-                    string command = string.Join("|", parts) + "|"; 
+
+                    string command = string.Join("|", parts) + "|";
 
                     await conn.SendAsync(command);
                     string response = await conn.ReadAsync();
@@ -348,16 +348,16 @@ namespace StatusMonitor_trial
                         switch (state)
                         {
                             case 0:
-                                StatusButtonManager.UpdateStatus(printer.Name, Color.IndianRed);
+                                StatusButtonManager.UpdateStatus(printer.Name, Color.Red);
                                 break;
                             case 1:
-                                StatusButtonManager.UpdateStatus(printer.Name, Color.LightBlue);
+                                StatusButtonManager.UpdateStatus(printer.Name, Color.Aqua);
                                 break;
                             case 2:
                                 StatusButtonManager.UpdateStatus(printer.Name, Color.Yellow);
                                 break;
                             case 3:
-                                StatusButtonManager.UpdateStatus(printer.Name, Color.LightGreen);
+                                StatusButtonManager.UpdateStatus(printer.Name, Color.Green);
                                 break;
                             default:
                                 StatusButtonManager.UpdateStatus(printer.Name, Color.LightGray);
@@ -382,16 +382,30 @@ namespace StatusMonitor_trial
         private async void btnCJM_Click(object sender, EventArgs e)
         {
             var printers = PrinterService.GetPrinters();
-            var fieldNamesFromUI = new List<string> { };
+            var results = new List<string>();
 
-            if (cmbField1.SelectedItem != null) fieldNamesFromUI.Add(cmbField1.SelectedItem.ToString());
-            if (cmbField2.SelectedItem != null) fieldNamesFromUI.Add(cmbField2.SelectedItem.ToString());
-            if (cmbField3.SelectedItem != null) fieldNamesFromUI.Add(cmbField3.SelectedItem.ToString());
-            if (cmbField5.SelectedItem != null) fieldNamesFromUI.Add(cmbField5.SelectedItem.ToString());
-            if (cmbField6.SelectedItem != null) fieldNamesFromUI.Add(cmbField6.SelectedItem.ToString());
+            if (cmbGetJob.SelectedItem == null)
+            {
+                MessageBox.Show("Please select a job first!");
+                return;
+            }
+            string jobName = cmbGetJob.SelectedItem.ToString();
+
+            if (!selectedPrinters.Any(kvp => kvp.Value))
+            {
+                MessageBox.Show("Please select at least one printer to check.");
+                return;
+            }
+
+            var fieldsAndValuesFromUI = new Dictionary<string, string>();
+            if (cmbField1.SelectedItem != null) fieldsAndValuesFromUI[cmbField1.SelectedItem.ToString()] = txtField1.Text;
+            if (cmbField2.SelectedItem != null) fieldsAndValuesFromUI[cmbField2.SelectedItem.ToString()] = txtField2.Text;
+            if (cmbField3.SelectedItem != null) fieldsAndValuesFromUI[cmbField3.SelectedItem.ToString()] = txtField5.Text;
+            if (cmbField5.SelectedItem != null) fieldsAndValuesFromUI[cmbField5.SelectedItem.ToString()] = txtField3.Text;
+            if (cmbField6.SelectedItem != null) fieldsAndValuesFromUI[cmbField6.SelectedItem.ToString()] = txtField4.Text;
+
             foreach (var kvp in selectedPrinters.Where(kvp => kvp.Value))
             {
-
                 int index = kvp.Key;
                 if (index >= printers.Count) continue;
 
@@ -401,57 +415,110 @@ namespace StatusMonitor_trial
                 var conn = PrinterService.GetConnection(printer.Name);
                 if (conn == null || !conn.IsConnected)
                 {
-                    MessageBox.Show($"Printer {printer.Name} is not connected.");
-                    return;
+                    results.Add($"⚠️ Printer {printer.Name} is not connected.");
+                    continue;
                 }
+
                 try
                 {
-                    string jobName = cmbGetJob.SelectedItem.ToString();
-                    if (string.IsNullOrEmpty(jobName))
-                    {
-                        MessageBox.Show("Please select job first!");
-                        return;
-                    }
-                    if (!selectedPrinters.Any())
-                    {
-                        MessageBox.Show("Please select at least one printer to check.");
-                        return;
-                    }
                     await conn.SendAsync("GJL");
                     string response = await conn.ReadAsync();
-                    var (countJob, jobs) = ParseResponse(response);
-                    bool jobExistsOnPrinter = jobs.Contains(jobName);
+                    var (_, jobs) = ParseResponse(response);
 
-                    if (!jobExistsOnPrinter)
+                    if (!jobs.Contains(jobName))
                     {
-                        MessageBox.Show($"Job '{jobName}' does not exist on printer {printer.Name}.");
+                        results.Add($"❌ Printer {printer.Name}: Job '{jobName}' does not exist on this printer.");
                         continue;
                     }
 
-                    await conn.SendAsync($"GJF|{jobName}|");
+                    await conn.SendAsync("GJD");
                     response = await conn.ReadAsync();
-                    var (countField, fieldNamesFromPrinter) = ParseResponse(response);
-                    bool allFieldsMatch = fieldNamesFromUI.All(field => fieldNamesFromPrinter.Contains(field));
 
-                    if (allFieldsMatch)
+                    var jobDataFromPrinter = ParseJobDataResponse(response);
+                    bool allFieldsAndValuesMatch = true;
+                    var mismatchedFields = new List<string>();
+
+                    foreach (var field in fieldsAndValuesFromUI)
                     {
-                        MessageBox.Show($"Job '{jobName}' and all fields match on printer {printer.Name}.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        if (!jobDataFromPrinter.ContainsKey(field.Key) ||
+                            jobDataFromPrinter[field.Key] != field.Value)
+                        {
+                            allFieldsAndValuesMatch = false;
+                            mismatchedFields.Add(field.Key);
+                        }
+                    }
+
+                    if (allFieldsAndValuesMatch)
+                    {
+                        results.Add($"✅ Printer {printer.Name}: Job '{jobName}' and all fields and values match.");
                     }
                     else
                     {
-
-                        MessageBox.Show($"Job '{jobName}' exists, but some fields do not match on printer {printer.Name}.", "Mismatch", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        results.Add($"❌ Printer {printer.Name}: Job '{jobName}' exists, but some fields do not match. Mismatched fields: {string.Join(", ", mismatchedFields)}.");
                     }
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show($"Error checking printer {printer.Name}: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    results.Add($"❌ Printer {printer.Name}: An error occurred - {ex.Message}");
                 }
             }
 
+            MessageBox.Show(string.Join("\n\n", results), "Verification Results", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
+        private Dictionary<string, string> ParseJobDataResponse(string response)
+        {
+            var data = new Dictionary<string, string>();
+            if (string.IsNullOrEmpty(response) || !response.StartsWith("JDL|"))
+            {
+                return data;
+            }
+            string content = response.Substring(response.IndexOf('|') + 1);
+            var parts = content.Split('|').ToList();
 
+            foreach (var part in parts)
+            {
+                if (string.IsNullOrEmpty(part)) continue;
+                string[] fieldParts = part.Split(new char[] { '=' }, 2);
+
+                if (fieldParts.Length == 2)
+                {
+                    data[fieldParts[0].Trim()] = fieldParts[1].Trim();
+                }
+            }
+
+            return data;
+        }
+
+        private void pbCLRF1_Click(object sender, EventArgs e)
+        {
+            cmbField1.SelectedItem = null;
+            txtField1.Text = string.Empty;
+        }
+
+        private void pbCLRF2_Click(object sender, EventArgs e)
+        {
+            cmbField2.SelectedItem = null;
+            txtField2.Text = string.Empty;
+        }
+
+        private void pbCLRF3_Click(object sender, EventArgs e)
+        {
+            cmbField3.SelectedItem = null;
+            txtField5.Text = string.Empty;
+        }
+
+        private void pbCLRF4_Click(object sender, EventArgs e)
+        {
+            cmbField5.SelectedItem = null;
+            txtField3.Text = string.Empty;
+        }
+
+        private void pbCLRF5_Click(object sender, EventArgs e)
+        {
+            cmbField6.SelectedItem = null;
+            txtField4.Text = string.Empty;
+        }
     }
 }
 

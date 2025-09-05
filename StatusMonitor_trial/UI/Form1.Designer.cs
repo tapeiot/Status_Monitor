@@ -57,7 +57,6 @@
             txtField2 = new TextBox();
             cmbField2 = new ComboBox();
             cmbField3 = new ComboBox();
-            cmbField4 = new ComboBox();
             txtField3 = new TextBox();
             cmbField5 = new ComboBox();
             txtField4 = new TextBox();
@@ -97,8 +96,25 @@
             btnST1 = new Button();
             btnCJM = new Button();
             label1 = new Label();
+            tableLayoutPanel2 = new TableLayoutPanel();
+            tableLayoutPanel3 = new TableLayoutPanel();
+            tableLayoutPanel4 = new TableLayoutPanel();
+            txtField5 = new TextBox();
+            pbCLRF1 = new PictureBox();
+            pbCLRF2 = new PictureBox();
+            pbCLRF3 = new PictureBox();
+            pbCLRF4 = new PictureBox();
+            pbCLRF5 = new PictureBox();
             panel1.SuspendLayout();
             menuStrip1.SuspendLayout();
+            tableLayoutPanel2.SuspendLayout();
+            tableLayoutPanel3.SuspendLayout();
+            tableLayoutPanel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pbCLRF1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pbCLRF2).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pbCLRF3).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pbCLRF4).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pbCLRF5).BeginInit();
             SuspendLayout();
             // 
             // panel1
@@ -110,15 +126,15 @@
             panel1.Controls.Add(btnVNCRemote);
             panel1.Controls.Add(cmbWeb);
             panel1.Controls.Add(cmbVNC);
-            panel1.Location = new Point(0, 29);
+            panel1.Location = new Point(0, 31);
             panel1.Margin = new Padding(3, 2, 3, 2);
             panel1.Name = "panel1";
-            panel1.Size = new Size(884, 105);
+            panel1.Size = new Size(884, 98);
             panel1.TabIndex = 0;
             // 
             // clockComponent1
             // 
-            clockComponent1.Location = new Point(10, 8);
+            clockComponent1.Location = new Point(12, 6);
             clockComponent1.Margin = new Padding(3, 2, 3, 2);
             clockComponent1.Name = "clockComponent1";
             clockComponent1.Size = new Size(172, 88);
@@ -128,7 +144,7 @@
             // 
             btnWebRemote.AutoSize = true;
             btnWebRemote.Font = new Font("Segoe UI", 14F);
-            btnWebRemote.Location = new Point(718, 60);
+            btnWebRemote.Location = new Point(717, 56);
             btnWebRemote.Margin = new Padding(3, 2, 3, 2);
             btnWebRemote.Name = "btnWebRemote";
             btnWebRemote.Size = new Size(145, 35);
@@ -141,7 +157,7 @@
             // 
             btnVNCRemote.AutoSize = true;
             btnVNCRemote.Font = new Font("Segoe UI", 14F);
-            btnVNCRemote.Location = new Point(718, 14);
+            btnVNCRemote.Location = new Point(717, 10);
             btnVNCRemote.Margin = new Padding(3, 2, 3, 2);
             btnVNCRemote.Name = "btnVNCRemote";
             btnVNCRemote.Size = new Size(145, 35);
@@ -154,7 +170,7 @@
             // 
             cmbWeb.Font = new Font("Segoe UI", 14F);
             cmbWeb.FormattingEnabled = true;
-            cmbWeb.Location = new Point(206, 63);
+            cmbWeb.Location = new Point(205, 57);
             cmbWeb.Margin = new Padding(3, 2, 3, 2);
             cmbWeb.Name = "cmbWeb";
             cmbWeb.Size = new Size(426, 33);
@@ -165,7 +181,7 @@
             // 
             cmbVNC.Font = new Font("Segoe UI", 14F);
             cmbVNC.FormattingEnabled = true;
-            cmbVNC.Location = new Point(206, 16);
+            cmbVNC.Location = new Point(205, 10);
             cmbVNC.Margin = new Padding(3, 2, 3, 2);
             cmbVNC.Name = "cmbVNC";
             cmbVNC.Size = new Size(426, 33);
@@ -223,12 +239,13 @@
             // 
             // cmbGetMachine
             // 
+            cmbGetMachine.Dock = DockStyle.Fill;
             cmbGetMachine.Font = new Font("Segoe UI", 16F);
             cmbGetMachine.FormattingEnabled = true;
-            cmbGetMachine.Location = new Point(37, 152);
+            cmbGetMachine.Location = new Point(3, 2);
             cmbGetMachine.Margin = new Padding(3, 2, 3, 2);
             cmbGetMachine.Name = "cmbGetMachine";
-            cmbGetMachine.Size = new Size(649, 38);
+            cmbGetMachine.Size = new Size(702, 38);
             cmbGetMachine.TabIndex = 5;
             cmbGetMachine.Text = "VideoJet IP:Port";
             // 
@@ -236,11 +253,12 @@
             // 
             lblStatus0.BackColor = Color.White;
             lblStatus0.BorderStyle = BorderStyle.FixedSingle;
+            lblStatus0.Dock = DockStyle.Fill;
             lblStatus0.Font = new Font("Segoe UI", 16F);
             lblStatus0.ForeColor = SystemColors.ButtonHighlight;
-            lblStatus0.Location = new Point(761, 152);
+            lblStatus0.Location = new Point(711, 0);
             lblStatus0.Name = "lblStatus0";
-            lblStatus0.Size = new Size(64, 34);
+            lblStatus0.Size = new Size(95, 44);
             lblStatus0.TabIndex = 6;
             lblStatus0.TextAlign = ContentAlignment.MiddleCenter;
             // 
@@ -248,33 +266,36 @@
             // 
             lblCountJN.BackColor = Color.White;
             lblCountJN.BorderStyle = BorderStyle.FixedSingle;
+            lblCountJN.Dock = DockStyle.Fill;
             lblCountJN.Font = new Font("Segoe UI", 16F);
             lblCountJN.ForeColor = Color.Black;
-            lblCountJN.Location = new Point(761, 190);
+            lblCountJN.Location = new Point(711, 0);
             lblCountJN.Name = "lblCountJN";
-            lblCountJN.Size = new Size(64, 34);
+            lblCountJN.Size = new Size(95, 44);
             lblCountJN.TabIndex = 8;
             lblCountJN.Text = "1";
             lblCountJN.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // cmbGetJob
             // 
+            cmbGetJob.Dock = DockStyle.Fill;
             cmbGetJob.Font = new Font("Segoe UI", 16F);
             cmbGetJob.FormattingEnabled = true;
-            cmbGetJob.Location = new Point(198, 190);
+            cmbGetJob.Location = new Point(158, 2);
             cmbGetJob.Margin = new Padding(3, 2, 3, 2);
             cmbGetJob.Name = "cmbGetJob";
-            cmbGetJob.Size = new Size(488, 38);
+            cmbGetJob.Size = new Size(547, 38);
             cmbGetJob.TabIndex = 7;
             cmbGetJob.Text = "JobName";
             // 
             // btnGetJob
             // 
+            btnGetJob.Dock = DockStyle.Fill;
             btnGetJob.Font = new Font("Segoe UI", 14F);
-            btnGetJob.Location = new Point(37, 193);
+            btnGetJob.Location = new Point(3, 2);
             btnGetJob.Margin = new Padding(3, 2, 3, 2);
             btnGetJob.Name = "btnGetJob";
-            btnGetJob.Size = new Size(145, 35);
+            btnGetJob.Size = new Size(149, 40);
             btnGetJob.TabIndex = 5;
             btnGetJob.Text = "Get Job";
             btnGetJob.UseVisualStyleBackColor = true;
@@ -282,11 +303,12 @@
             // 
             // btnGetField
             // 
+            btnGetField.Dock = DockStyle.Fill;
             btnGetField.Font = new Font("Segoe UI", 14F);
-            btnGetField.Location = new Point(37, 232);
+            btnGetField.Location = new Point(3, 46);
             btnGetField.Margin = new Padding(3, 2, 3, 2);
             btnGetField.Name = "btnGetField";
-            btnGetField.Size = new Size(145, 35);
+            btnGetField.Size = new Size(149, 40);
             btnGetField.TabIndex = 9;
             btnGetField.Text = "Get Field";
             btnGetField.UseVisualStyleBackColor = true;
@@ -296,23 +318,25 @@
             // 
             lblCountFN.BackColor = Color.White;
             lblCountFN.BorderStyle = BorderStyle.FixedSingle;
+            lblCountFN.Dock = DockStyle.Fill;
             lblCountFN.Font = new Font("Segoe UI", 16F);
             lblCountFN.ForeColor = Color.Black;
-            lblCountFN.Location = new Point(761, 230);
+            lblCountFN.Location = new Point(711, 44);
             lblCountFN.Name = "lblCountFN";
-            lblCountFN.Size = new Size(64, 34);
+            lblCountFN.Size = new Size(95, 44);
             lblCountFN.TabIndex = 11;
             lblCountFN.Text = "1";
             lblCountFN.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // cmbGetField
             // 
+            cmbGetField.Dock = DockStyle.Fill;
             cmbGetField.Font = new Font("Segoe UI", 16F);
             cmbGetField.FormattingEnabled = true;
-            cmbGetField.Location = new Point(198, 229);
+            cmbGetField.Location = new Point(158, 46);
             cmbGetField.Margin = new Padding(3, 2, 3, 2);
             cmbGetField.Name = "cmbGetField";
-            cmbGetField.Size = new Size(488, 38);
+            cmbGetField.Size = new Size(547, 38);
             cmbGetField.TabIndex = 10;
             cmbGetField.Text = "fn,dd,mon,year,etc,";
             // 
@@ -351,7 +375,7 @@
             cmbField1.Location = new Point(35, 361);
             cmbField1.Margin = new Padding(3, 2, 3, 2);
             cmbField1.Name = "cmbField1";
-            cmbField1.Size = new Size(209, 38);
+            cmbField1.Size = new Size(206, 38);
             cmbField1.TabIndex = 5;
             // 
             // txtField1
@@ -361,17 +385,18 @@
             txtField1.Location = new Point(250, 363);
             txtField1.Margin = new Padding(3, 2, 3, 2);
             txtField1.Name = "txtField1";
-            txtField1.Size = new Size(575, 36);
+            txtField1.Size = new Size(523, 36);
             txtField1.TabIndex = 14;
+            txtField1.TextAlign = HorizontalAlignment.Center;
             // 
             // txtField2
             // 
             txtField2.BorderStyle = BorderStyle.FixedSingle;
             txtField2.Font = new Font("Segoe UI", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            txtField2.Location = new Point(175, 401);
+            txtField2.Location = new Point(250, 403);
             txtField2.Margin = new Padding(3, 2, 3, 2);
             txtField2.Name = "txtField2";
-            txtField2.Size = new Size(112, 36);
+            txtField2.Size = new Size(523, 36);
             txtField2.TabIndex = 16;
             txtField2.TextAlign = HorizontalAlignment.Center;
             // 
@@ -384,7 +409,7 @@
             cmbField2.Location = new Point(35, 400);
             cmbField2.Margin = new Padding(3, 2, 3, 2);
             cmbField2.Name = "cmbField2";
-            cmbField2.Size = new Size(134, 38);
+            cmbField2.Size = new Size(206, 38);
             cmbField2.TabIndex = 15;
             // 
             // cmbField3
@@ -393,33 +418,20 @@
             cmbField3.Font = new Font("Segoe UI", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             cmbField3.ForeColor = Color.White;
             cmbField3.FormattingEnabled = true;
-            cmbField3.Location = new Point(292, 401);
+            cmbField3.Location = new Point(35, 442);
             cmbField3.Margin = new Padding(3, 2, 3, 2);
             cmbField3.Name = "cmbField3";
-            cmbField3.Size = new Size(134, 38);
+            cmbField3.Size = new Size(206, 38);
             cmbField3.TabIndex = 17;
-            // 
-            // cmbField4
-            // 
-            cmbField4.BackColor = Color.White;
-            cmbField4.Font = new Font("Segoe UI", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            cmbField4.ForeColor = Color.Black;
-            cmbField4.FormattingEnabled = true;
-            cmbField4.Items.AddRange(new object[] { "JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC" });
-            cmbField4.Location = new Point(430, 400);
-            cmbField4.Margin = new Padding(3, 2, 3, 2);
-            cmbField4.Name = "cmbField4";
-            cmbField4.Size = new Size(121, 38);
-            cmbField4.TabIndex = 18;
             // 
             // txtField3
             // 
             txtField3.BorderStyle = BorderStyle.FixedSingle;
             txtField3.Font = new Font("Segoe UI", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            txtField3.Location = new Point(695, 401);
+            txtField3.Location = new Point(250, 484);
             txtField3.Margin = new Padding(3, 2, 3, 2);
             txtField3.Name = "txtField3";
-            txtField3.Size = new Size(131, 36);
+            txtField3.Size = new Size(522, 36);
             txtField3.TabIndex = 20;
             txtField3.TextAlign = HorizontalAlignment.Center;
             // 
@@ -429,20 +441,20 @@
             cmbField5.Font = new Font("Segoe UI", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             cmbField5.ForeColor = Color.White;
             cmbField5.FormattingEnabled = true;
-            cmbField5.Location = new Point(556, 400);
+            cmbField5.Location = new Point(35, 484);
             cmbField5.Margin = new Padding(3, 2, 3, 2);
             cmbField5.Name = "cmbField5";
-            cmbField5.Size = new Size(134, 38);
+            cmbField5.Size = new Size(206, 38);
             cmbField5.TabIndex = 19;
             // 
             // txtField4
             // 
             txtField4.BorderStyle = BorderStyle.FixedSingle;
             txtField4.Font = new Font("Segoe UI", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            txtField4.Location = new Point(252, 441);
+            txtField4.Location = new Point(250, 525);
             txtField4.Margin = new Padding(3, 2, 3, 2);
             txtField4.Name = "txtField4";
-            txtField4.Size = new Size(575, 36);
+            txtField4.Size = new Size(523, 36);
             txtField4.TabIndex = 22;
             // 
             // cmbField6
@@ -451,17 +463,17 @@
             cmbField6.Font = new Font("Segoe UI", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             cmbField6.ForeColor = Color.White;
             cmbField6.FormattingEnabled = true;
-            cmbField6.Location = new Point(35, 441);
+            cmbField6.Location = new Point(35, 525);
             cmbField6.Margin = new Padding(3, 2, 3, 2);
             cmbField6.Name = "cmbField6";
-            cmbField6.Size = new Size(209, 38);
+            cmbField6.Size = new Size(207, 38);
             cmbField6.TabIndex = 21;
             // 
             // btnSJ1
             // 
             btnSJ1.BackColor = Color.LightGray;
             btnSJ1.Font = new Font("Segoe UI", 14F);
-            btnSJ1.Location = new Point(39, 514);
+            btnSJ1.Location = new Point(37, 578);
             btnSJ1.Margin = new Padding(3, 2, 3, 2);
             btnSJ1.Name = "btnSJ1";
             btnSJ1.Size = new Size(48, 38);
@@ -473,7 +485,7 @@
             // 
             btnSJ2.BackColor = Color.LightGray;
             btnSJ2.Font = new Font("Segoe UI", 14F);
-            btnSJ2.Location = new Point(101, 514);
+            btnSJ2.Location = new Point(99, 578);
             btnSJ2.Margin = new Padding(3, 2, 3, 2);
             btnSJ2.Name = "btnSJ2";
             btnSJ2.Size = new Size(48, 38);
@@ -485,7 +497,7 @@
             // 
             btnSJ3.BackColor = Color.LightGray;
             btnSJ3.Font = new Font("Segoe UI", 14F);
-            btnSJ3.Location = new Point(165, 514);
+            btnSJ3.Location = new Point(163, 578);
             btnSJ3.Margin = new Padding(3, 2, 3, 2);
             btnSJ3.Name = "btnSJ3";
             btnSJ3.Size = new Size(48, 38);
@@ -497,7 +509,7 @@
             // 
             btnSJ4.BackColor = Color.LightGray;
             btnSJ4.Font = new Font("Segoe UI", 14F);
-            btnSJ4.Location = new Point(229, 514);
+            btnSJ4.Location = new Point(227, 578);
             btnSJ4.Margin = new Padding(3, 2, 3, 2);
             btnSJ4.Name = "btnSJ4";
             btnSJ4.Size = new Size(48, 38);
@@ -509,7 +521,7 @@
             // 
             btnSJ5.BackColor = Color.LightGray;
             btnSJ5.Font = new Font("Segoe UI", 14F);
-            btnSJ5.Location = new Point(294, 514);
+            btnSJ5.Location = new Point(292, 578);
             btnSJ5.Margin = new Padding(3, 2, 3, 2);
             btnSJ5.Name = "btnSJ5";
             btnSJ5.Size = new Size(48, 38);
@@ -521,7 +533,7 @@
             // 
             btnSJ10.BackColor = Color.LightGray;
             btnSJ10.Font = new Font("Segoe UI", 14F);
-            btnSJ10.Location = new Point(294, 556);
+            btnSJ10.Location = new Point(292, 620);
             btnSJ10.Margin = new Padding(3, 2, 3, 2);
             btnSJ10.Name = "btnSJ10";
             btnSJ10.Size = new Size(48, 38);
@@ -533,7 +545,7 @@
             // 
             btnSJ9.BackColor = Color.LightGray;
             btnSJ9.Font = new Font("Segoe UI", 14F);
-            btnSJ9.Location = new Point(229, 556);
+            btnSJ9.Location = new Point(227, 620);
             btnSJ9.Margin = new Padding(3, 2, 3, 2);
             btnSJ9.Name = "btnSJ9";
             btnSJ9.Size = new Size(48, 38);
@@ -545,7 +557,7 @@
             // 
             btnSJ8.BackColor = Color.LightGray;
             btnSJ8.Font = new Font("Segoe UI", 14F);
-            btnSJ8.Location = new Point(165, 556);
+            btnSJ8.Location = new Point(163, 620);
             btnSJ8.Margin = new Padding(3, 2, 3, 2);
             btnSJ8.Name = "btnSJ8";
             btnSJ8.Size = new Size(48, 38);
@@ -557,7 +569,7 @@
             // 
             btnSJ7.BackColor = Color.LightGray;
             btnSJ7.Font = new Font("Segoe UI", 14F);
-            btnSJ7.Location = new Point(101, 556);
+            btnSJ7.Location = new Point(99, 620);
             btnSJ7.Margin = new Padding(3, 2, 3, 2);
             btnSJ7.Name = "btnSJ7";
             btnSJ7.Size = new Size(48, 38);
@@ -569,7 +581,7 @@
             // 
             btnSJ6.BackColor = Color.LightGray;
             btnSJ6.Font = new Font("Segoe UI", 14F);
-            btnSJ6.Location = new Point(39, 556);
+            btnSJ6.Location = new Point(37, 620);
             btnSJ6.Margin = new Padding(3, 2, 3, 2);
             btnSJ6.Name = "btnSJ6";
             btnSJ6.Size = new Size(48, 38);
@@ -582,7 +594,7 @@
             btnSendJob.BackColor = Color.Green;
             btnSendJob.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnSendJob.ForeColor = Color.White;
-            btnSendJob.Location = new Point(432, 514);
+            btnSendJob.Location = new Point(430, 578);
             btnSendJob.Margin = new Padding(3, 2, 3, 2);
             btnSendJob.Name = "btnSendJob";
             btnSendJob.Size = new Size(395, 100);
@@ -593,11 +605,12 @@
             // 
             // btnReconnect
             // 
+            btnReconnect.Dock = DockStyle.Fill;
             btnReconnect.Font = new Font("Segoe UI", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnReconnect.Location = new Point(37, 696);
+            btnReconnect.Location = new Point(3, 2);
             btnReconnect.Margin = new Padding(3, 2, 3, 2);
             btnReconnect.Name = "btnReconnect";
-            btnReconnect.Size = new Size(174, 38);
+            btnReconnect.Size = new Size(173, 48);
             btnReconnect.TabIndex = 34;
             btnReconnect.Text = "Reconnect";
             btnReconnect.UseVisualStyleBackColor = true;
@@ -605,11 +618,12 @@
             // 
             // btnGST
             // 
+            btnGST.Dock = DockStyle.Fill;
             btnGST.Font = new Font("Segoe UI", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnGST.Location = new Point(37, 762);
+            btnGST.Location = new Point(3, 54);
             btnGST.Margin = new Padding(3, 2, 3, 2);
             btnGST.Name = "btnGST";
-            btnGST.Size = new Size(174, 38);
+            btnGST.Size = new Size(173, 48);
             btnGST.TabIndex = 35;
             btnGST.Text = "Get Status";
             btnGST.UseVisualStyleBackColor = true;
@@ -620,7 +634,7 @@
             btnRC1.BackColor = Color.LightGray;
             btnRC1.Enabled = false;
             btnRC1.Font = new Font("Segoe UI", 14F);
-            btnRC1.Location = new Point(292, 697);
+            btnRC1.Location = new Point(292, 741);
             btnRC1.Margin = new Padding(3, 2, 3, 2);
             btnRC1.Name = "btnRC1";
             btnRC1.Size = new Size(48, 38);
@@ -633,7 +647,7 @@
             btnRC2.BackColor = Color.LightGray;
             btnRC2.Enabled = false;
             btnRC2.Font = new Font("Segoe UI", 14F);
-            btnRC2.Location = new Point(346, 697);
+            btnRC2.Location = new Point(346, 741);
             btnRC2.Margin = new Padding(3, 2, 3, 2);
             btnRC2.Name = "btnRC2";
             btnRC2.Size = new Size(48, 38);
@@ -646,7 +660,7 @@
             btnRC4.BackColor = Color.LightGray;
             btnRC4.Enabled = false;
             btnRC4.Font = new Font("Segoe UI", 14F);
-            btnRC4.Location = new Point(452, 697);
+            btnRC4.Location = new Point(454, 741);
             btnRC4.Margin = new Padding(3, 2, 3, 2);
             btnRC4.Name = "btnRC4";
             btnRC4.Size = new Size(48, 38);
@@ -659,7 +673,7 @@
             btnRC3.BackColor = Color.LightGray;
             btnRC3.Enabled = false;
             btnRC3.Font = new Font("Segoe UI", 14F);
-            btnRC3.Location = new Point(399, 697);
+            btnRC3.Location = new Point(400, 741);
             btnRC3.Margin = new Padding(3, 2, 3, 2);
             btnRC3.Name = "btnRC3";
             btnRC3.Size = new Size(48, 38);
@@ -672,7 +686,7 @@
             btnRC6.BackColor = Color.LightGray;
             btnRC6.Enabled = false;
             btnRC6.Font = new Font("Segoe UI", 14F);
-            btnRC6.Location = new Point(563, 697);
+            btnRC6.Location = new Point(563, 741);
             btnRC6.Margin = new Padding(3, 2, 3, 2);
             btnRC6.Name = "btnRC6";
             btnRC6.Size = new Size(48, 38);
@@ -685,7 +699,7 @@
             btnRC5.BackColor = Color.LightGray;
             btnRC5.Enabled = false;
             btnRC5.Font = new Font("Segoe UI", 14F);
-            btnRC5.Location = new Point(506, 697);
+            btnRC5.Location = new Point(506, 741);
             btnRC5.Margin = new Padding(3, 2, 3, 2);
             btnRC5.Name = "btnRC5";
             btnRC5.Size = new Size(48, 38);
@@ -698,7 +712,7 @@
             btnRC8.BackColor = Color.LightGray;
             btnRC8.Enabled = false;
             btnRC8.Font = new Font("Segoe UI", 14F);
-            btnRC8.Location = new Point(670, 697);
+            btnRC8.Location = new Point(673, 741);
             btnRC8.Margin = new Padding(3, 2, 3, 2);
             btnRC8.Name = "btnRC8";
             btnRC8.Size = new Size(48, 38);
@@ -711,7 +725,7 @@
             btnRC7.BackColor = Color.LightGray;
             btnRC7.Enabled = false;
             btnRC7.Font = new Font("Segoe UI", 14F);
-            btnRC7.Location = new Point(617, 697);
+            btnRC7.Location = new Point(617, 741);
             btnRC7.Margin = new Padding(3, 2, 3, 2);
             btnRC7.Name = "btnRC7";
             btnRC7.Size = new Size(48, 38);
@@ -724,7 +738,7 @@
             btnRC10.BackColor = Color.LightGray;
             btnRC10.Enabled = false;
             btnRC10.Font = new Font("Segoe UI", 14F);
-            btnRC10.Location = new Point(777, 697);
+            btnRC10.Location = new Point(777, 741);
             btnRC10.Margin = new Padding(3, 2, 3, 2);
             btnRC10.Name = "btnRC10";
             btnRC10.Size = new Size(48, 38);
@@ -737,7 +751,7 @@
             btnRC9.BackColor = Color.LightGray;
             btnRC9.Enabled = false;
             btnRC9.Font = new Font("Segoe UI", 14F);
-            btnRC9.Location = new Point(724, 697);
+            btnRC9.Location = new Point(725, 741);
             btnRC9.Margin = new Padding(3, 2, 3, 2);
             btnRC9.Name = "btnRC9";
             btnRC9.Size = new Size(48, 38);
@@ -750,7 +764,7 @@
             btnST10.BackColor = Color.LightGray;
             btnST10.Enabled = false;
             btnST10.Font = new Font("Segoe UI", 14F);
-            btnST10.Location = new Point(777, 763);
+            btnST10.Location = new Point(777, 793);
             btnST10.Margin = new Padding(3, 2, 3, 2);
             btnST10.Name = "btnST10";
             btnST10.Size = new Size(48, 38);
@@ -763,7 +777,7 @@
             btnST9.BackColor = Color.LightGray;
             btnST9.Enabled = false;
             btnST9.Font = new Font("Segoe UI", 14F);
-            btnST9.Location = new Point(724, 763);
+            btnST9.Location = new Point(724, 793);
             btnST9.Margin = new Padding(3, 2, 3, 2);
             btnST9.Name = "btnST9";
             btnST9.Size = new Size(48, 38);
@@ -776,7 +790,7 @@
             btnST8.BackColor = Color.LightGray;
             btnST8.Enabled = false;
             btnST8.Font = new Font("Segoe UI", 14F);
-            btnST8.Location = new Point(670, 763);
+            btnST8.Location = new Point(670, 793);
             btnST8.Margin = new Padding(3, 2, 3, 2);
             btnST8.Name = "btnST8";
             btnST8.Size = new Size(48, 38);
@@ -789,7 +803,7 @@
             btnST7.BackColor = Color.LightGray;
             btnST7.Enabled = false;
             btnST7.Font = new Font("Segoe UI", 14F);
-            btnST7.Location = new Point(617, 763);
+            btnST7.Location = new Point(617, 793);
             btnST7.Margin = new Padding(3, 2, 3, 2);
             btnST7.Name = "btnST7";
             btnST7.Size = new Size(48, 38);
@@ -802,7 +816,7 @@
             btnST6.BackColor = Color.LightGray;
             btnST6.Enabled = false;
             btnST6.Font = new Font("Segoe UI", 14F);
-            btnST6.Location = new Point(563, 763);
+            btnST6.Location = new Point(563, 793);
             btnST6.Margin = new Padding(3, 2, 3, 2);
             btnST6.Name = "btnST6";
             btnST6.Size = new Size(48, 38);
@@ -815,7 +829,7 @@
             btnST5.BackColor = Color.LightGray;
             btnST5.Enabled = false;
             btnST5.Font = new Font("Segoe UI", 14F);
-            btnST5.Location = new Point(506, 763);
+            btnST5.Location = new Point(506, 793);
             btnST5.Margin = new Padding(3, 2, 3, 2);
             btnST5.Name = "btnST5";
             btnST5.Size = new Size(48, 38);
@@ -828,7 +842,7 @@
             btnST4.BackColor = Color.LightGray;
             btnST4.Enabled = false;
             btnST4.Font = new Font("Segoe UI", 14F);
-            btnST4.Location = new Point(452, 763);
+            btnST4.Location = new Point(452, 793);
             btnST4.Margin = new Padding(3, 2, 3, 2);
             btnST4.Name = "btnST4";
             btnST4.Size = new Size(48, 38);
@@ -841,7 +855,7 @@
             btnST3.BackColor = Color.LightGray;
             btnST3.Enabled = false;
             btnST3.Font = new Font("Segoe UI", 14F);
-            btnST3.Location = new Point(399, 763);
+            btnST3.Location = new Point(399, 793);
             btnST3.Margin = new Padding(3, 2, 3, 2);
             btnST3.Name = "btnST3";
             btnST3.Size = new Size(48, 38);
@@ -854,7 +868,7 @@
             btnST2.BackColor = Color.LightGray;
             btnST2.Enabled = false;
             btnST2.Font = new Font("Segoe UI", 14F);
-            btnST2.Location = new Point(346, 763);
+            btnST2.Location = new Point(346, 793);
             btnST2.Margin = new Padding(3, 2, 3, 2);
             btnST2.Name = "btnST2";
             btnST2.Size = new Size(48, 38);
@@ -867,7 +881,7 @@
             btnST1.BackColor = Color.LightGray;
             btnST1.Enabled = false;
             btnST1.Font = new Font("Segoe UI", 14F);
-            btnST1.Location = new Point(292, 763);
+            btnST1.Location = new Point(292, 793);
             btnST1.Margin = new Padding(3, 2, 3, 2);
             btnST1.Name = "btnST1";
             btnST1.Size = new Size(48, 38);
@@ -878,7 +892,7 @@
             // btnCJM
             // 
             btnCJM.Font = new Font("Segoe UI", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnCJM.Location = new Point(37, 598);
+            btnCJM.Location = new Point(35, 662);
             btnCJM.Margin = new Padding(3, 2, 3, 2);
             btnCJM.Name = "btnCJM";
             btnCJM.Size = new Size(303, 41);
@@ -891,16 +905,162 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 12F);
-            label1.Location = new Point(432, 616);
+            label1.Location = new Point(430, 680);
             label1.Name = "label1";
             label1.Size = new Size(0, 21);
             label1.TabIndex = 57;
+            // 
+            // tableLayoutPanel2
+            // 
+            tableLayoutPanel2.ColumnCount = 2;
+            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 87.51545F));
+            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 12.4845486F));
+            tableLayoutPanel2.Controls.Add(cmbGetMachine, 0, 0);
+            tableLayoutPanel2.Controls.Add(lblStatus0, 1, 0);
+            tableLayoutPanel2.Location = new Point(35, 149);
+            tableLayoutPanel2.Name = "tableLayoutPanel2";
+            tableLayoutPanel2.RowCount = 1;
+            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutPanel2.Size = new Size(809, 44);
+            tableLayoutPanel2.TabIndex = 59;
+            // 
+            // tableLayoutPanel3
+            // 
+            tableLayoutPanel3.ColumnCount = 3;
+            tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 21.9548874F));
+            tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 78.04511F));
+            tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 100F));
+            tableLayoutPanel3.Controls.Add(btnGetJob, 0, 0);
+            tableLayoutPanel3.Controls.Add(btnGetField, 0, 1);
+            tableLayoutPanel3.Controls.Add(lblCountJN, 2, 0);
+            tableLayoutPanel3.Controls.Add(lblCountFN, 2, 1);
+            tableLayoutPanel3.Controls.Add(cmbGetField, 1, 1);
+            tableLayoutPanel3.Controls.Add(cmbGetJob, 1, 0);
+            tableLayoutPanel3.Location = new Point(35, 199);
+            tableLayoutPanel3.Name = "tableLayoutPanel3";
+            tableLayoutPanel3.RowCount = 2;
+            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 51F));
+            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 49F));
+            tableLayoutPanel3.Size = new Size(809, 88);
+            tableLayoutPanel3.TabIndex = 60;
+            // 
+            // tableLayoutPanel4
+            // 
+            tableLayoutPanel4.ColumnCount = 1;
+            tableLayoutPanel4.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanel4.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanel4.Controls.Add(btnReconnect, 0, 0);
+            tableLayoutPanel4.Controls.Add(btnGST, 0, 1);
+            tableLayoutPanel4.Location = new Point(39, 733);
+            tableLayoutPanel4.Name = "tableLayoutPanel4";
+            tableLayoutPanel4.RowCount = 2;
+            tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutPanel4.Size = new Size(179, 104);
+            tableLayoutPanel4.TabIndex = 61;
+            // 
+            // txtField5
+            // 
+            txtField5.BorderStyle = BorderStyle.FixedSingle;
+            txtField5.Font = new Font("Segoe UI", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            txtField5.Location = new Point(250, 442);
+            txtField5.Margin = new Padding(3, 2, 3, 2);
+            txtField5.Name = "txtField5";
+            txtField5.Size = new Size(523, 36);
+            txtField5.TabIndex = 62;
+            txtField5.TextAlign = HorizontalAlignment.Center;
+            // 
+            // pbCLRF1
+            // 
+            pbCLRF1.BackColor = Color.White;
+            pbCLRF1.BorderStyle = BorderStyle.FixedSingle;
+            pbCLRF1.Image = Properties.Resources.close;
+            pbCLRF1.Location = new Point(777, 363);
+            pbCLRF1.Name = "pbCLRF1";
+            pbCLRF1.Size = new Size(48, 36);
+            pbCLRF1.SizeMode = PictureBoxSizeMode.Zoom;
+            pbCLRF1.TabIndex = 63;
+            pbCLRF1.TabStop = false;
+            pbCLRF1.Click += pbCLRF1_Click;
+            // 
+            // pbCLRF2
+            // 
+            pbCLRF2.BackColor = Color.White;
+            pbCLRF2.BorderStyle = BorderStyle.FixedSingle;
+            pbCLRF2.Image = Properties.Resources.close;
+            pbCLRF2.Location = new Point(777, 402);
+            pbCLRF2.Name = "pbCLRF2";
+            pbCLRF2.Size = new Size(48, 36);
+            pbCLRF2.SizeMode = PictureBoxSizeMode.Zoom;
+            pbCLRF2.TabIndex = 64;
+            pbCLRF2.TabStop = false;
+            pbCLRF2.Click += pbCLRF2_Click;
+            // 
+            // pbCLRF3
+            // 
+            pbCLRF3.BackColor = Color.White;
+            pbCLRF3.BorderStyle = BorderStyle.FixedSingle;
+            pbCLRF3.Image = Properties.Resources.close;
+            pbCLRF3.Location = new Point(777, 442);
+            pbCLRF3.Name = "pbCLRF3";
+            pbCLRF3.Size = new Size(48, 36);
+            pbCLRF3.SizeMode = PictureBoxSizeMode.Zoom;
+            pbCLRF3.TabIndex = 65;
+            pbCLRF3.TabStop = false;
+            pbCLRF3.Click += pbCLRF3_Click;
+            // 
+            // pbCLRF4
+            // 
+            pbCLRF4.BackColor = Color.White;
+            pbCLRF4.BorderStyle = BorderStyle.FixedSingle;
+            pbCLRF4.Image = Properties.Resources.close;
+            pbCLRF4.Location = new Point(777, 484);
+            pbCLRF4.Name = "pbCLRF4";
+            pbCLRF4.Size = new Size(48, 36);
+            pbCLRF4.SizeMode = PictureBoxSizeMode.Zoom;
+            pbCLRF4.TabIndex = 66;
+            pbCLRF4.TabStop = false;
+            pbCLRF4.Click += pbCLRF4_Click;
+            // 
+            // pbCLRF5
+            // 
+            pbCLRF5.BackColor = Color.White;
+            pbCLRF5.BorderStyle = BorderStyle.FixedSingle;
+            pbCLRF5.Image = Properties.Resources.close;
+            pbCLRF5.Location = new Point(777, 525);
+            pbCLRF5.Name = "pbCLRF5";
+            pbCLRF5.Size = new Size(48, 36);
+            pbCLRF5.SizeMode = PictureBoxSizeMode.Zoom;
+            pbCLRF5.TabIndex = 67;
+            pbCLRF5.TabStop = false;
+            pbCLRF5.Click += pbCLRF5_Click;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(884, 861);
+            Controls.Add(pbCLRF5);
+            Controls.Add(pbCLRF4);
+            Controls.Add(pbCLRF3);
+            Controls.Add(pbCLRF2);
+            Controls.Add(pbCLRF1);
+            Controls.Add(txtField5);
+            Controls.Add(panel1);
+            Controls.Add(btnRC10);
+            Controls.Add(btnRC9);
+            Controls.Add(btnRC8);
+            Controls.Add(btnRC7);
+            Controls.Add(btnRC6);
+            Controls.Add(btnRC5);
+            Controls.Add(btnRC4);
+            Controls.Add(btnRC3);
+            Controls.Add(btnRC2);
+            Controls.Add(btnRC1);
+            Controls.Add(tableLayoutPanel4);
+            Controls.Add(tableLayoutPanel3);
+            Controls.Add(tableLayoutPanel2);
             Controls.Add(label1);
             Controls.Add(btnCJM);
             Controls.Add(btnST10);
@@ -913,18 +1073,6 @@
             Controls.Add(btnST3);
             Controls.Add(btnST2);
             Controls.Add(btnST1);
-            Controls.Add(btnRC10);
-            Controls.Add(btnRC9);
-            Controls.Add(btnRC8);
-            Controls.Add(btnRC7);
-            Controls.Add(btnRC6);
-            Controls.Add(btnRC5);
-            Controls.Add(btnRC4);
-            Controls.Add(btnRC3);
-            Controls.Add(btnRC2);
-            Controls.Add(btnRC1);
-            Controls.Add(btnGST);
-            Controls.Add(btnReconnect);
             Controls.Add(btnSendJob);
             Controls.Add(btnSJ10);
             Controls.Add(btnSJ9);
@@ -940,7 +1088,6 @@
             Controls.Add(cmbField6);
             Controls.Add(txtField3);
             Controls.Add(cmbField5);
-            Controls.Add(cmbField4);
             Controls.Add(cmbField3);
             Controls.Add(txtField2);
             Controls.Add(cmbField2);
@@ -948,15 +1095,6 @@
             Controls.Add(cmbField1);
             Controls.Add(lbl2);
             Controls.Add(lbl1);
-            Controls.Add(btnGetField);
-            Controls.Add(lblCountFN);
-            Controls.Add(cmbGetField);
-            Controls.Add(btnGetJob);
-            Controls.Add(lblCountJN);
-            Controls.Add(cmbGetJob);
-            Controls.Add(lblStatus0);
-            Controls.Add(cmbGetMachine);
-            Controls.Add(panel1);
             Controls.Add(menuStrip1);
             MainMenuStrip = menuStrip1;
             Margin = new Padding(3, 2, 3, 2);
@@ -969,6 +1107,14 @@
             panel1.PerformLayout();
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
+            tableLayoutPanel2.ResumeLayout(false);
+            tableLayoutPanel3.ResumeLayout(false);
+            tableLayoutPanel4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)pbCLRF1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pbCLRF2).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pbCLRF3).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pbCLRF4).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pbCLRF5).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -1001,7 +1147,6 @@
         private TextBox txtField2;
         private ComboBox cmbField2;
         private ComboBox cmbField3;
-        private ComboBox cmbField4;
         private TextBox txtField3;
         private ComboBox cmbField5;
         private TextBox txtField4;
@@ -1043,5 +1188,14 @@
         private ToolStripMenuItem registerToolStripMenuItem;
         private Button btnCJM;
         private Label label1;
+        private TableLayoutPanel tableLayoutPanel2;
+        private TableLayoutPanel tableLayoutPanel3;
+        private TableLayoutPanel tableLayoutPanel4;
+        private TextBox txtField5;
+        private PictureBox pbCLRF1;
+        private PictureBox pbCLRF2;
+        private PictureBox pbCLRF3;
+        private PictureBox pbCLRF4;
+        private PictureBox pbCLRF5;
     }
 }
