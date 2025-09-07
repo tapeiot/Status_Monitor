@@ -43,11 +43,11 @@ Status Monitoring - Desktop application C#
 2. เลือก Download ระหว่าง .exe หรือ setup.exe
 3. หากใช้แบบ setup.exe เมื่อ Download เรียบร้อยให้คลิกเข้าไปเพื่อทำการติดตั้ง
 4. เลือก path ที่จะเก็บไฟล์ </br>
-<img width="604" height="471" alt="image" src="https://github.com/user-attachments/assets/96c1913c-1505-4e80-a990-f062384470ef" />
+<img width="604" height="471" alt="image" src="https://github.com/user-attachments/assets/96c1913c-1505-4e80-a990-f062384470ef" /></br>
 5. จากนั้นกดติดตั้งแล้วรอ </br>
 <img width="602" height="468" alt="image" src="https://github.com/user-attachments/assets/cb4b3aec-797c-4707-b299-6fb5525cf9f2" /></br>
 <img width="606" height="466" alt="image" src="https://github.com/user-attachments/assets/20c7c258-f14e-41f1-b627-5d7b322b83fc" /></br>
-6. เป็นอันเสร็จ
+6. เป็นอันเสร็จ</br>
 <img width="603" height="465" alt="image" src="https://github.com/user-attachments/assets/2e9c3fb9-809c-488c-9237-d77c33af4b96" /></br>
 
 ## ตัวอย่าง (Example): 
