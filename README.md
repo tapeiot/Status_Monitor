@@ -54,15 +54,15 @@ Status Monitoring - Desktop application C#
 ### Login - page </br>
 <img width="600" height="600" alt="Screenshot 2025-08-31 220755" src="https://github.com/user-attachments/assets/5461283c-59a6-416f-b84f-9d108aa0aac7" /> </br>
 ### Operator - page </br>
-<img width="885" height="889" alt="Screenshot 2025-09-07 125619" src="https://github.com/user-attachments/assets/c36072e8-ff29-4dbb-ba3d-73f1a6f49667" /> </br>
+<img width="600" height="600" alt="Screenshot 2025-09-07 125619" src="https://github.com/user-attachments/assets/c36072e8-ff29-4dbb-ba3d-73f1a6f49667" /> </br>
 ### TCP/IP - page </br>
-<img width="884" height="892" alt="Screenshot 2025-08-31 220835" src="https://github.com/user-attachments/assets/7ede3a45-ddcd-4896-a442-d5a2b9b1bde2" /> </br>
+<img width="600" height="600" alt="Screenshot 2025-08-31 220835" src="https://github.com/user-attachments/assets/7ede3a45-ddcd-4896-a442-d5a2b9b1bde2" /> </br>
 ### Register - page </br>
-<img width="887" height="891" alt="Screenshot 2025-08-31 220850" src="https://github.com/user-attachments/assets/60af6716-d457-4ea2-bea2-e25fda83f90f" /> </br>
+<img width="600" height="600" alt="Screenshot 2025-08-31 220850" src="https://github.com/user-attachments/assets/60af6716-d457-4ea2-bea2-e25fda83f90f" /> </br>
 ### Setting - page </br>
-<img width="889" height="895" alt="Screenshot 2025-08-31 220904" src="https://github.com/user-attachments/assets/886757e9-15bf-42ce-bd64-fc406569e1fd" /> </br>
+<img width="600" height="600" alt="Screenshot 2025-08-31 220904" src="https://github.com/user-attachments/assets/886757e9-15bf-42ce-bd64-fc406569e1fd" /> </br>
 ### Log - page </br>
-<img width="886" height="894" alt="Screenshot 2025-08-31 221008" src="https://github.com/user-attachments/assets/1265192f-f771-4272-a7de-0f34c944d712" /> </br>
+<img width="600" height="600" alt="Screenshot 2025-08-31 221008" src="https://github.com/user-attachments/assets/1265192f-f771-4272-a7de-0f34c944d712" /> </br>
 
 
 
