@@ -63,12 +63,12 @@ namespace StatusMonitor_trial
         {
             if (dgvUserList.CurrentRow != null && dgvUserList.CurrentRow.DataBoundItem is UserInfo user)
             {
-                var updatedUser = dgvUserList.CurrentRow.DataBoundItem as PathInfo;
+                var updatedUser = dgvUserList.CurrentRow.DataBoundItem as UserInfo;
                 user.Name = txtUser.Text;
                 user.Password = txtPass.Text;
                 user.Role = cmbRole.SelectedItem.ToString();
 
-                PathService.UpdatePath(updatedUser);
+                UserService.UpdateUser(updatedUser);
 
                 userBindingSource.DataSource = UserService.GetUsers();
                 cleartxt();
@@ -83,7 +83,7 @@ namespace StatusMonitor_trial
         {
             if (dgvUserList.CurrentRow != null && dgvUserList.CurrentRow.DataBoundItem is User user)
             {
-                PathService.DeletePath(user.Name);
+                UserService.RemoveUser(user.Name);
                 userBindingSource.DataSource = UserService.GetUsers();
                 cleartxt();
             }
