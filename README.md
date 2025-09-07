@@ -31,11 +31,11 @@ Status Monitoring - Desktop application C#
   14.	เพิ่ม User สามารถ Login ได้ </br>
     - User: ได้เฉพาะหน้า Operation </br>
     - Admin: Config ค่าต่างๆ </br>
-  15.	เก็บ Log ไว้ใน Text File .txt
+  15.	เก็บ Log ไว้ใน Text File .txt </br>
 
-
+ไฟล์สำคัญ https://drive.google.com/drive/folders/1xrcUc9Nugq2-NuKPiKqwmxaCtbNsGyBB
 ## สถานะของโปรเจกต์ (Project Status): 
-🟩 $${\color{green}Complete!}$$
+🟩 $${\color{green}Complete!}$$ 
 
 ## การติดตั้งและใช้งาน (Installation and Usage): 
 วิธีการติดตั้ง
