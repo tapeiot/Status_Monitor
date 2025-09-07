@@ -1,4 +1,5 @@
-﻿using System;
+﻿using StatusMonitor_trial.Models;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
@@ -57,9 +58,4 @@ namespace StatusMonitor_trial.Services
         }
     }
 
-    public class LogEntry
-    {
-        public string Message { get; set; }
-        public Color Color { get; set; }
-    }
 }

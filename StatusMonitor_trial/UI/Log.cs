@@ -47,7 +47,7 @@ namespace StatusMonitor_trial
 
         private void Log_Load(object sender, EventArgs e)
         {
-            var allLogs = Logger.GetAllLogs();
+            var allLogs = Logger.GetLogs();
             foreach (var logEntry in allLogs)
             {
                 UpdateLog(logEntry);
@@ -62,7 +62,7 @@ namespace StatusMonitor_trial
         {
             Logger.Log("Attempting to reconnect all printers...", Color.Gray);
             await PrinterService.ReconnectAllPrintersAsync();
-            var allLogs = Logger.GetAllLogs();
+            var allLogs = Logger.GetLogs();
             foreach (var logEntry in allLogs)
             {
                 UpdateLog(logEntry);
