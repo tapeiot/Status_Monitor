@@ -52,7 +52,7 @@ Status Monitoring - Desktop application C#
 
 ## ตัวอย่าง (Example): 
 ### Login - page </br>
-<img width="600" height="400" alt="Screenshot 2025-08-31 220755" src="https://github.com/user-attachments/assets/5461283c-59a6-416f-b84f-9d108aa0aac7" /> </br>
+<img width="600" height="600" alt="Screenshot 2025-08-31 220755" src="https://github.com/user-attachments/assets/5461283c-59a6-416f-b84f-9d108aa0aac7" /> </br>
 ### Operator - page </br>
 <img width="885" height="889" alt="Screenshot 2025-09-07 125619" src="https://github.com/user-attachments/assets/c36072e8-ff29-4dbb-ba3d-73f1a6f49667" /> </br>
 ### TCP/IP - page </br>
