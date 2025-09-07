@@ -39,10 +39,16 @@ Status Monitoring - Desktop application C#
 
 ## การติดตั้งและใช้งาน (Installation and Usage): 
 วิธีการติดตั้ง
-1. โคลน repository นี้: `git clone https://github.com/your-username/your-project.git`
-2. เข้าไปในโฟลเดอร์โปรเจกต์: `cd your-project`
-3. รันโปรแกรมด้วยคำสั่ง: `dotnet run`
-4. 
+1. เข้าไปที่ https://drive.google.com/drive/folders/1xrcUc9Nugq2-NuKPiKqwmxaCtbNsGyBB
+2. เลือก Download ระหว่าง .exe หรือ setup.exe
+3. หากใช้แบบ setup.exe เมื่อ Download เรียบร้อยให้คลิกเข้าไปเพื่อทำการติดตั้ง
+4. เลือก path ที่จะเก็บไฟล์ </br>
+<img width="604" height="471" alt="image" src="https://github.com/user-attachments/assets/96c1913c-1505-4e80-a990-f062384470ef" />
+5. จากนั้นกดติดตั้งแล้วรอ </br>
+<img width="602" height="468" alt="image" src="https://github.com/user-attachments/assets/cb4b3aec-797c-4707-b299-6fb5525cf9f2" /></br>
+<img width="606" height="466" alt="image" src="https://github.com/user-attachments/assets/20c7c258-f14e-41f1-b627-5d7b322b83fc" /></br>
+6. เป็นอันเสร็จ
+<img width="603" height="465" alt="image" src="https://github.com/user-attachments/assets/2e9c3fb9-809c-488c-9237-d77c33af4b96" /></br>
 
 ## ตัวอย่าง (Example): 
 <img width="890" height="894" alt="Screenshot 2025-08-31 220755" src="https://github.com/user-attachments/assets/5461283c-59a6-416f-b84f-9d108aa0aac7" /> </br>
