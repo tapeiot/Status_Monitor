@@ -1,14 +1,19 @@
-﻿using StatusMonitor_trial.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Drawing;
+using System.IO;
 
-namespace StatusMonitor_trial.Services
+namespace StatusMonitor_trial.Services 
 {
     public static class Logger
     {
+
+        private static readonly object _fileLock = new object();
+
+        private static readonly string _logFileName = $"log-{DateTime.Now:yyyy-MM-dd}.txt";
+
+        private static readonly string _logFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, _logFileName);
+
         private static List<LogEntry> _logEntries = new List<LogEntry>();
         public static event EventHandler<LogEntry> LogMessageAdded;
 
@@ -16,21 +21,45 @@ namespace StatusMonitor_trial.Services
         {
             var logEntry = new LogEntry
             {
-                Message = $"{DateTime.Now.ToString("HH:mm:ss")} - {message}",
+                Message = $"{DateTime.Now:HH:mm:ss} - {message}",
                 Color = color
             };
 
-            _logEntries.Add(logEntry); 
+            _logEntries.Add(logEntry);
             LogMessageAdded?.Invoke(null, logEntry);
+
+            WriteToFile(logEntry.Message);
         }
 
-        public static List<LogEntry> GetAllLogs()
+        private static void WriteToFile(string message)
+        {
+            lock (_fileLock)
+            {
+                try
+                {
+                    File.AppendAllText(_logFilePath, message + Environment.NewLine);
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Error writing to log file: {ex.Message}");
+                }
+            }
+        }
+
+        public static List<LogEntry> GetLogs()
         {
             return _logEntries;
         }
+
         public static void ClearLogs()
         {
             _logEntries.Clear();
         }
+    }
+
+    public class LogEntry
+    {
+        public string Message { get; set; }
+        public Color Color { get; set; }
     }
 }
