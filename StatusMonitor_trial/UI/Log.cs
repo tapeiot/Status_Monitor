@@ -10,11 +10,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static StatusMonitor_trial.Log;
 using static StatusMonitor_trial.Services.PrinterService;
 
 namespace StatusMonitor_trial
 {
-    public partial class Log : BaseForm
+    public partial class Log : BaseForm, IRefreshable
     {
         private List<Button> statusButtons;
         public Log()
@@ -36,6 +37,15 @@ namespace StatusMonitor_trial
 
         }
 
+        public void LoadLogData()
+        {
+            var allLogs = Logger.GetLogs();
+            foreach (var logEntry in allLogs)
+            {
+                UpdateLog(logEntry);
+            }
+        }
+
 
         private void UpdateLog(LogEntry logEntry)
         {
@@ -45,15 +55,6 @@ namespace StatusMonitor_trial
             rtbLog.ScrollToCaret();
         }
 
-        private void Log_Load(object sender, EventArgs e)
-        {
-            var allLogs = Logger.GetLogs();
-            foreach (var logEntry in allLogs)
-            {
-                UpdateLog(logEntry);
-            }
-
-        }
         private void Log_FormClosing(object sender, FormClosingEventArgs e)
         {
             Form_FormClosing();
@@ -75,6 +76,10 @@ namespace StatusMonitor_trial
         }
 
 
+    }
+    public interface IRefreshable
+    {
+        void LoadLogData();
     }
 
 }

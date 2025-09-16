@@ -281,7 +281,6 @@
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Log";
             FormClosing += Log_FormClosing;
-            Load += Log_Load;
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
             ResumeLayout(false);
