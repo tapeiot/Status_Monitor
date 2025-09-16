@@ -897,7 +897,7 @@
             btnCJM.Name = "btnCJM";
             btnCJM.Size = new Size(303, 41);
             btnCJM.TabIndex = 56;
-            btnCJM.Text = "Check Job Match";
+            btnCJM.Text = "Check Field";
             btnCJM.UseVisualStyleBackColor = true;
             btnCJM.Click += btnCJM_Click;
             // 

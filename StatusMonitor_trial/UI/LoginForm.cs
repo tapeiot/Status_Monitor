@@ -25,7 +25,7 @@ namespace StatusMonitor_trial
             if (user != null)
             {
                 SessionManager.Instance.SetUser(user);
-                FormManager.OpenForm(this, new Form1());
+                FormManager.OpenForm<Form1>(this);
             }
             else
             {
