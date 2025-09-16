@@ -2,6 +2,7 @@
 using StatusMonitor_trial.Helpers;
 using StatusMonitor_trial.Models;
 using StatusMonitor_trial.Services;
+using StatusMonitor_trial.UI;
 using System;
 using System.ComponentModel;
 using System.Data;
@@ -91,19 +92,6 @@ namespace StatusMonitor_trial
         {
 
             PopulatePrintersComboBox();
-        }
-        private (int count, List<string> items) ParseResponse(string response)
-        {
-            string[] parts = response
-                .Replace("<CR>", "")
-                .Split('|', StringSplitOptions.RemoveEmptyEntries)
-                .Select(p => p.Trim('\r', '\n'))
-                .ToArray();
-
-            int count = (parts.Length > 1 && int.TryParse(parts[1], out int n)) ? n : 0;
-            List<string> items = parts.Skip(2).ToList();
-
-            return (count, items);
         }
         private void PopulatePrintersComboBox()
         {
@@ -203,7 +191,7 @@ namespace StatusMonitor_trial
                 Logger.Log($"Send : GJL<CR> to {printer.Name}", Color.Blue);
                 Logger.Log($"Response from {printer.Name} : {response}", Color.Green);
 
-                var (count, jobs) = ParseResponse(response);
+                var (count, jobs) = PrinterService.ParseResponse(response);
                 lblCountJN.Text = count.ToString();
 
                 cmbGetJob.Items.Clear();
@@ -381,113 +369,27 @@ namespace StatusMonitor_trial
 
         private async void btnCJM_Click(object sender, EventArgs e)
         {
-            var printers = PrinterService.GetPrinters();
-            var results = new List<string>();
-
-            if (cmbGetJob.SelectedItem == null)
+            string jobName = cmbGetJob.SelectedItem?.ToString();
+            if (string.IsNullOrEmpty(jobName))
             {
-                MessageBox.Show("Please select a job first!");
+                MessageBox.Show("Please select a job first!", "No Job Selected", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-            string jobName = cmbGetJob.SelectedItem.ToString();
+            PrinterInfo? sourcePrinter = SelectedPrinter;
+            var allPrinters = PrinterService.GetPrinters();
+            var printersToCheck = selectedPrinters
+                .Where(kvp => kvp.Value == true && kvp.Key < allPrinters.Count)
+                .Select(kvp => allPrinters[kvp.Key])
+                .ToList();
 
-            if (!selectedPrinters.Any(kvp => kvp.Value))
+            if (!printersToCheck.Any())
             {
-                MessageBox.Show("Please select at least one printer to check.");
+                MessageBox.Show("Please select at least one printer to check ", "No Printers Selected", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-
-            var fieldsAndValuesFromUI = new Dictionary<string, string>();
-            if (cmbField1.SelectedItem != null) fieldsAndValuesFromUI[cmbField1.SelectedItem.ToString()] = txtField1.Text;
-            if (cmbField2.SelectedItem != null) fieldsAndValuesFromUI[cmbField2.SelectedItem.ToString()] = txtField2.Text;
-            if (cmbField3.SelectedItem != null) fieldsAndValuesFromUI[cmbField3.SelectedItem.ToString()] = txtField5.Text;
-            if (cmbField5.SelectedItem != null) fieldsAndValuesFromUI[cmbField5.SelectedItem.ToString()] = txtField3.Text;
-            if (cmbField6.SelectedItem != null) fieldsAndValuesFromUI[cmbField6.SelectedItem.ToString()] = txtField4.Text;
-
-            foreach (var kvp in selectedPrinters.Where(kvp => kvp.Value))
-            {
-                int index = kvp.Key;
-                if (index >= printers.Count) continue;
-
-                var printer = printers[index] as PrinterInfo;
-                if (printer == null) continue;
-
-                var conn = PrinterService.GetConnection(printer.Name);
-                if (conn == null || !conn.IsConnected)
-                {
-                    results.Add($"⚠️ Printer {printer.Name} is not connected.");
-                    continue;
-                }
-
-                try
-                {
-                    await conn.SendAsync("GJL");
-                    string response = await conn.ReadAsync();
-                    var (_, jobs) = ParseResponse(response);
-
-                    if (!jobs.Contains(jobName))
-                    {
-                        results.Add($"❌ Printer {printer.Name}: Job '{jobName}' does not exist on this printer.");
-                        continue;
-                    }
-
-                    await conn.SendAsync("GJD");
-                    response = await conn.ReadAsync();
-
-                    var jobDataFromPrinter = ParseJobDataResponse(response);
-                    bool allFieldsAndValuesMatch = true;
-                    var mismatchedFields = new List<string>();
-
-                    foreach (var field in fieldsAndValuesFromUI)
-                    {
-                        if (!jobDataFromPrinter.ContainsKey(field.Key) ||
-                            jobDataFromPrinter[field.Key] != field.Value)
-                        {
-                            allFieldsAndValuesMatch = false;
-                            mismatchedFields.Add(field.Key);
-                        }
-                    }
-
-                    if (allFieldsAndValuesMatch)
-                    {
-                        results.Add($"✅ Printer {printer.Name}: Job '{jobName}' and all fields and values match.");
-                    }
-                    else
-                    {
-                        results.Add($"❌ Printer {printer.Name}: Job '{jobName}' exists, but some fields do not match. Mismatched fields: {string.Join(", ", mismatchedFields)}.");
-                    }
-                }
-                catch (Exception ex)
-                {
-                    results.Add($"❌ Printer {printer.Name}: An error occurred - {ex.Message}");
-                }
-            }
-
-            MessageBox.Show(string.Join("\n\n", results), "Verification Results", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        }
-
-        private Dictionary<string, string> ParseJobDataResponse(string response)
-        {
-            var data = new Dictionary<string, string>();
-            if (string.IsNullOrEmpty(response) || !response.StartsWith("JDL|"))
-            {
-                return data;
-            }
-            string content = response.Substring(response.IndexOf('|') + 1);
-            var parts = content.Split('|').ToList();
-
-            foreach (var part in parts)
-            {
-                if (string.IsNullOrEmpty(part)) continue;
-                string[] fieldParts = part.Split(new char[] { '=' }, 2);
-
-                if (fieldParts.Length == 2)
-                {
-                    data[fieldParts[0].Trim()] = fieldParts[1].Trim();
-                }
-            }
-
-            return data;
+            var availableFields = cmbGetField.Items.Cast<string>().ToList();
+            var checkForm = new CheckField(printersToCheck, availableFields, sourcePrinter);
+            checkForm.Show(); 
         }
 
         private void pbCLRF1_Click(object sender, EventArgs e)

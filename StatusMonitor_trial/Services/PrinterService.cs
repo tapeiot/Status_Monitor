@@ -149,6 +149,65 @@ namespace StatusMonitor_trial.Services
             }
 
         }
+        public static async Task<List<FieldCheckResult>> CheckJobFieldsAsync(List<PrinterInfo> printersToCheck)
+        {
+            var results = new List<FieldCheckResult>();
+            var tasks = new List<Task<FieldCheckResult>>();
+
+            foreach (var printer in printersToCheck)
+            {
+                tasks.Add(Task.Run(async () =>
+                {
+                    var result = new FieldCheckResult { PrinterName = printer.Name };
+                    var conn = GetConnection(printer.Name);
+
+                    if (conn == null || !conn.IsConnected)
+                    {
+                        result.IsConnected = false;
+                        result.ErrorMessage = "Not Connected";
+                        return result;
+                    }
+
+                    try
+                    {
+                        result.IsConnected = true;
+                        await conn.SendAsync("GJD");
+                        string response = await conn.ReadAsync();
+                        var (count, fields) = ParseResponse(response);
+
+                        foreach (var field in fields)
+                        {
+                            var parts = field.Split('=');
+                            if (parts.Length == 2)
+                            {
+                                result.FieldValues[parts[0]] = parts[1];
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        result.ErrorMessage = ex.Message;
+                    }
+                    return result;
+                }));
+            }
+
+            var completedTasks = await Task.WhenAll(tasks);
+            results.AddRange(completedTasks);
+
+            return results;
+        }
+        public static (int count, List<string> items) ParseResponse(string response)
+        {
+            string[] parts = response
+                .Replace("<CR>", "")
+                .Split('|', StringSplitOptions.RemoveEmptyEntries)
+                .Select(p => p.Trim('\r', '\n'))
+                .ToArray();
+            int count = (parts.Length > 1 && int.TryParse(parts[1], out int n)) ? n : 0;
+            List<string> items = parts.Skip(2).ToList();
+            return (count, items);
+        }
     }
 }
 

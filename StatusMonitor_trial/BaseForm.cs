@@ -13,27 +13,27 @@ namespace StatusMonitor_trial
         private Dictionary<string, PrinterConnection> printerConnections = new Dictionary<string, PrinterConnection>();
         protected void mnsOperator_Click(object sender, EventArgs e)
         {
-            FormManager.OpenForm(this, new Form1());
+            FormManager.OpenForm<Form1>(this);
         }
 
         protected void mnsTCP_Click(object sender, EventArgs e)
         {
-            FormManager.OpenForm(this, new TCP_IP());
+            FormManager.OpenForm<TCP_IP>(this);
         }
 
         protected void registerToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FormManager.OpenForm(this, new Register());
+            FormManager.OpenForm<Register>(this);
         }
 
         protected void mnsSetting_Click(object sender, EventArgs e)
         {
-            FormManager.OpenForm(this, new Setting());
+            FormManager.OpenForm<Setting>(this);
         }
 
         protected void mnsLog_Click(object sender, EventArgs e)
         {
-            FormManager.OpenForm(this, new Log());
+            FormManager.OpenForm<Log>(this);
         }
         protected void Form_FormClosing()
         {
