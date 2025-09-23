@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Log));
             rtbLog = new RichTextBox();
             btnRC10 = new Button();
             btnRC9 = new Button();
@@ -277,6 +278,7 @@
             Controls.Add(btnRC1);
             Controls.Add(btnReconnect);
             Controls.Add(rtbLog);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "Log";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Log";
