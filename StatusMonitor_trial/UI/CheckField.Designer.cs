@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CheckField));
             cmbField6 = new ComboBox();
             cmbField5 = new ComboBox();
             cmbField3 = new ComboBox();
@@ -240,6 +241,7 @@
             Controls.Add(cmbField2);
             Controls.Add(cmbField1);
             Controls.Add(lbl1);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "CheckField";
             Text = "CheckField";
             Load += CheckField_Load;

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Setting));
             panel1 = new Panel();
             clockComponent1 = new ClockComponent();
             btnWebRemote = new Button();
@@ -331,6 +332,7 @@
             Controls.Add(menuStrip1);
             Controls.Add(groupBox2);
             Controls.Add(panel1);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "Setting";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Setting";
