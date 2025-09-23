@@ -335,23 +335,30 @@ namespace StatusMonitor_trial
                         string response = await conn.ReadAsync();
                         Logger.Log($"Response from {printer.Name}: {response}", Color.Green);
                         var (state, fields) = ParseResponse(response);
-
+                        //MessageBox.Show(fields[0]);
                         switch (state)
                         {
-                            case 0:
-                                StatusButtonManager.UpdateStatus(printer.Name, Color.Red);
+                            case 0: 
+                                if (fields[0]== "1") StatusButtonManager.UpdateStatus(printer.Name, Color.Yellow);
+                                else if (fields[0] == "2") StatusButtonManager.UpdateStatus(printer.Name, Color.Red);
+                                else StatusButtonManager.UpdateStatus(printer.Name, Color.LightGray);
                                 break;
                             case 1:
-                                StatusButtonManager.UpdateStatus(printer.Name, Color.Aqua);
+                                if (fields[0] == "1") StatusButtonManager.UpdateStatus(printer.Name, Color.Yellow);
+                                else StatusButtonManager.UpdateStatus(printer.Name, Color.LightGray);
                                 break;
                             case 2:
-                                StatusButtonManager.UpdateStatus(printer.Name, Color.Yellow);
+                                if (fields[0] == "1") StatusButtonManager.UpdateStatus(printer.Name, Color.Yellow);
+                                else if (fields[0] == "2") StatusButtonManager.UpdateStatus(printer.Name, Color.Red);
+                                else StatusButtonManager.UpdateStatus(printer.Name, Color.LightGray);
                                 break;
                             case 3:
-                                StatusButtonManager.UpdateStatus(printer.Name, Color.Green);
+                                if (fields[0] == "1") StatusButtonManager.UpdateStatus(printer.Name, Color.Yellow);
+                                else StatusButtonManager.UpdateStatus(printer.Name, Color.Green);
                                 break;
                             default:
-                                StatusButtonManager.UpdateStatus(printer.Name, Color.LightGray);
+                                if (fields[0] == "1") StatusButtonManager.UpdateStatus(printer.Name, Color.Yellow);
+                                else StatusButtonManager.UpdateStatus(printer.Name, Color.Aqua);
                                 break;
                         }
                     }
