@@ -39,6 +39,7 @@ namespace StatusMonitor_trial
 
         public void LoadLogData()
         {
+            rtbLog.Clear();
             var allLogs = Logger.GetLogs();
             foreach (var logEntry in allLogs)
             {
