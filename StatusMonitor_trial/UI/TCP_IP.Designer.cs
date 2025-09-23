@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TCP_IP));
             menuStrip1 = new MenuStrip();
             mnsOperator = new ToolStripMenuItem();
             mnsTCP = new ToolStripMenuItem();
@@ -314,6 +315,7 @@
             Controls.Add(dgvMachines);
             Controls.Add(panel1);
             Controls.Add(menuStrip1);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Margin = new Padding(3, 2, 3, 2);
             Name = "TCP_IP";
             StartPosition = FormStartPosition.CenterScreen;

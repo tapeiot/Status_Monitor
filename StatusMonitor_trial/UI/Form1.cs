@@ -40,6 +40,7 @@ namespace StatusMonitor_trial
 
             this.Text = "Status Monitor Trial ASCII";
             PrinterService.PrintersListChanged += PrinterService_PrintersChanged;
+            PathService.PathListChanged += PathChanged;
             statusButtonsRC = new List<Button>
             {
                 btnRC1, btnRC2, btnRC3, btnRC4, btnRC5, btnRC6, btnRC7, btnRC8, btnRC9, btnRC10
@@ -93,8 +94,14 @@ namespace StatusMonitor_trial
 
             PopulatePrintersComboBox();
         }
+        private void PathChanged(object sender, EventArgs e)
+        {
+
+            LoadPaths(cmbVNC, cmbWeb);
+        }
         private void PopulatePrintersComboBox()
         {
+            LoadPaths(cmbVNC, cmbWeb);
             cmbGetMachine.Items.Clear();
             var printers = PrinterService.GetPrinters();
             foreach (var printer in printers)
@@ -138,10 +145,6 @@ namespace StatusMonitor_trial
             }
         }
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
-            LoadPaths(cmbVNC, cmbWeb);
-        }
 
         private void btnSelect_Click(object sender, EventArgs e)
         {
@@ -332,23 +335,30 @@ namespace StatusMonitor_trial
                         string response = await conn.ReadAsync();
                         Logger.Log($"Response from {printer.Name}: {response}", Color.Green);
                         var (state, fields) = ParseResponse(response);
-
+                        //MessageBox.Show(fields[0]);
                         switch (state)
                         {
-                            case 0:
-                                StatusButtonManager.UpdateStatus(printer.Name, Color.Red);
+                            case 0: 
+                                if (fields[0]== "1") StatusButtonManager.UpdateStatus(printer.Name, Color.Yellow);
+                                else if (fields[0] == "2") StatusButtonManager.UpdateStatus(printer.Name, Color.Red);
+                                else StatusButtonManager.UpdateStatus(printer.Name, Color.LightGray);
                                 break;
                             case 1:
-                                StatusButtonManager.UpdateStatus(printer.Name, Color.Aqua);
+                                if (fields[0] == "1") StatusButtonManager.UpdateStatus(printer.Name, Color.Yellow);
+                                else StatusButtonManager.UpdateStatus(printer.Name, Color.LightGray);
                                 break;
                             case 2:
-                                StatusButtonManager.UpdateStatus(printer.Name, Color.Yellow);
+                                if (fields[0] == "1") StatusButtonManager.UpdateStatus(printer.Name, Color.Yellow);
+                                else if (fields[0] == "2") StatusButtonManager.UpdateStatus(printer.Name, Color.Red);
+                                else StatusButtonManager.UpdateStatus(printer.Name, Color.LightGray);
                                 break;
                             case 3:
-                                StatusButtonManager.UpdateStatus(printer.Name, Color.Green);
+                                if (fields[0] == "1") StatusButtonManager.UpdateStatus(printer.Name, Color.Yellow);
+                                else StatusButtonManager.UpdateStatus(printer.Name, Color.Green);
                                 break;
                             default:
-                                StatusButtonManager.UpdateStatus(printer.Name, Color.LightGray);
+                                if (fields[0] == "1") StatusButtonManager.UpdateStatus(printer.Name, Color.Yellow);
+                                else StatusButtonManager.UpdateStatus(printer.Name, Color.Aqua);
                                 break;
                         }
                     }

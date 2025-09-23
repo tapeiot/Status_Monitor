@@ -39,6 +39,7 @@ namespace StatusMonitor_trial
 
         public void LoadLogData()
         {
+            rtbLog.Clear();   
             var allLogs = Logger.GetLogs();
             foreach (var logEntry in allLogs)
             {
@@ -49,7 +50,7 @@ namespace StatusMonitor_trial
 
         private void UpdateLog(LogEntry logEntry)
         {
-
+            
             rtbLog.SelectionColor = logEntry.Color;
             rtbLog.AppendText(logEntry.Message + Environment.NewLine);
             rtbLog.ScrollToCaret();
@@ -61,6 +62,7 @@ namespace StatusMonitor_trial
         }
         private async void btnReconnect_Click(object sender, EventArgs e)
         {
+            rtbLog.Clear();
             Logger.Log("Attempting to reconnect all printers...", Color.Gray);
             await PrinterService.ReconnectAllPrintersAsync();
             var allLogs = Logger.GetLogs();

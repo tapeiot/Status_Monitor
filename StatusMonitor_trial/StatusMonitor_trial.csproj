@@ -6,7 +6,12 @@
     <Nullable>enable</Nullable>
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
+    <ApplicationIcon>Tomco Logo Fit (1).ico</ApplicationIcon>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="Tomco Logo Fit (1).ico" />
+  </ItemGroup>
 
   <ItemGroup>
     <None Include="BaseForm.cs" />

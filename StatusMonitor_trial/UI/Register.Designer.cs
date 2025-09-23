@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Register));
             menuStrip1 = new MenuStrip();
             mnsOperator = new ToolStripMenuItem();
             mnsTCP = new ToolStripMenuItem();
@@ -224,6 +225,7 @@
             Controls.Add(label2);
             Controls.Add(label1);
             Controls.Add(txtUser);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "Register";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Register";
