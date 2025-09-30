@@ -30,7 +30,8 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LoginForm));
             panel1 = new Panel();
-            label1 = new Label();
+            pictureBox3 = new PictureBox();
+            pictureBox2 = new PictureBox();
             clockComponent1 = new ClockComponent();
             pictureBox1 = new PictureBox();
             txtPass = new TextBox();
@@ -40,6 +41,8 @@
             btnCancel = new Button();
             btnLogin = new Button();
             panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -47,7 +50,8 @@
             // 
             panel1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             panel1.BackColor = Color.Gold;
-            panel1.Controls.Add(label1);
+            panel1.Controls.Add(pictureBox3);
+            panel1.Controls.Add(pictureBox2);
             panel1.Controls.Add(clockComponent1);
             panel1.Location = new Point(1, 11);
             panel1.Margin = new Padding(3, 2, 3, 2);
@@ -55,16 +59,25 @@
             panel1.Size = new Size(885, 113);
             panel1.TabIndex = 1;
             // 
-            // label1
+            // pictureBox3
             // 
-            label1.Anchor = AnchorStyles.None;
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 24F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(454, 31);
-            label1.Name = "label1";
-            label1.Size = new Size(407, 45);
-            label1.TabIndex = 6;
-            label1.Text = "Status Monitoring - Login";
+            pictureBox3.Image = Properties.Resources.videojet_logo_blue_black_rgb_transparent;
+            pictureBox3.Location = new Point(599, 8);
+            pictureBox3.Name = "pictureBox3";
+            pictureBox3.Size = new Size(280, 102);
+            pictureBox3.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox3.TabIndex = 7;
+            pictureBox3.TabStop = false;
+            // 
+            // pictureBox2
+            // 
+            pictureBox2.Image = Properties.Resources.Tomco_Logo_Fit__1_;
+            pictureBox2.Location = new Point(188, 8);
+            pictureBox2.Name = "pictureBox2";
+            pictureBox2.Size = new Size(408, 102);
+            pictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox2.TabIndex = 6;
+            pictureBox2.TabStop = false;
             // 
             // clockComponent1
             // 
@@ -185,7 +198,8 @@
             StartPosition = FormStartPosition.CenterScreen;
             Text = "LoginForm";
             panel1.ResumeLayout(false);
-            panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -194,7 +208,6 @@
         #endregion
 
         private Panel panel1;
-        private Label label1;
         private ClockComponent clockComponent1;
         private PictureBox pictureBox1;
         private TextBox txtPass;
@@ -203,5 +216,7 @@
         private TextBox txtUser;
         private Button btnCancel;
         private Button btnLogin;
+        private PictureBox pictureBox2;
+        private PictureBox pictureBox3;
     }
 }

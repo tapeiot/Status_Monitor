@@ -25,7 +25,7 @@ namespace StatusMonitor_trial
             try
             {
                 Client = new TcpClient();
-                await Client.ConnectAsync(Info.IP, Info.Port).WaitAsync(TimeSpan.FromSeconds(5));
+                await Client.ConnectAsync(Info.IP, Info.Port).WaitAsync(TimeSpan.FromSeconds(3));
                 return true;
             }
             catch

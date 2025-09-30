@@ -17,7 +17,6 @@ namespace StatusMonitor_trial
 
     public partial class TCP_IP : BaseForm
     {
-        private Dictionary<string, PrinterConnection> printerConnections = new Dictionary<string, PrinterConnection>();
         private BindingSource printerBindingSource = new BindingSource();
         public TCP_IP()
         {
@@ -26,7 +25,7 @@ namespace StatusMonitor_trial
 
             PrinterService.PrintersListChanged += PrinterService_PrintersListChanged;
             PrinterService.PrinterStatusChanged += PrinterService_PrinterStatusChanged;
-
+            PathService.PathListChanged += PathChanged;
         }
         private void TCP_IP_Load(object sender, EventArgs e)
         {
@@ -36,6 +35,11 @@ namespace StatusMonitor_trial
         private void TCP_IP_FormClosing(object sender, FormClosingEventArgs e)
         {
             Form_FormClosing();
+        }
+        private void PathChanged(object sender, EventArgs e)
+        {
+
+            LoadPaths(cmbVNC, cmbWeb);
         }
         private void HighlightPrinterRow()
         {

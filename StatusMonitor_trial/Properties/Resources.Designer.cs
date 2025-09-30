@@ -93,9 +93,29 @@ namespace StatusMonitor_trial.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Tomco_Logo_Fit__1_ {
+            get {
+                object obj = ResourceManager.GetObject("Tomco Logo Fit (1)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap user {
             get {
                 object obj = ResourceManager.GetObject("user", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap videojet_logo_blue_black_rgb_transparent {
+            get {
+                object obj = ResourceManager.GetObject("videojet-logo-blue-black-rgb-transparent", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

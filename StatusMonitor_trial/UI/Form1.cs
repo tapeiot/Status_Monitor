@@ -38,7 +38,7 @@ namespace StatusMonitor_trial
                 menuStrip1.Visible = true;
             }
 
-            this.Text = "Status Monitor Trial ASCII";
+            PrinterService.PrinterStatusChanged += PrinterService_PrinterStatusChanged;
             PrinterService.PrintersListChanged += PrinterService_PrintersChanged;
             PathService.PathListChanged += PathChanged;
             statusButtonsRC = new List<Button>
@@ -93,6 +93,18 @@ namespace StatusMonitor_trial
         {
 
             PopulatePrintersComboBox();
+        }
+        private void PrinterService_PrinterStatusChanged(object sender, PrinterInfo printer)
+        {
+            this.BeginInvoke((Action)(() => {
+
+                var button = statusButtonsRC.FirstOrDefault(btn => btn.Tag?.ToString() == printer.Name);
+                if (button == null) return;
+
+                bool isConnected = PrinterService.GetConnection(printer.Name)?.IsConnected ?? false;
+
+                button.BackColor = isConnected ? Color.LightGreen : Color.LightGray;
+            }));
         }
         private void PathChanged(object sender, EventArgs e)
         {
