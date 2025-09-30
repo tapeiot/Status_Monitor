@@ -86,18 +86,16 @@ namespace StatusMonitor_trial.Services
             if (success)
             {
                 _activeConnections[printer.Name] = connection;
-
                 Logger.Log($"Connected to {printer.Name}", Color.Green);
                 PrinterStatusChanged?.Invoke(null, printer);
-                StatusButtonManager.UpdateReconnectStatus(printer.Name, true);
+                //StatusButtonManager.UpdateReconnectStatus(printer.Name, true);
             }
             else
             {
-
                 Logger.Log($"Failed to connect to {printer.Name}", Color.Red);
                 PrinterStatusChanged?.Invoke(null, printer);
-                StatusButtonManager.UpdateReconnectStatus(printer.Name, false);
-            }
+                //StatusButtonManager.UpdateReconnectStatus(printer.Name, false);
+            }
         }
         public static async Task ReconnectAllPrintersAsync()
         {

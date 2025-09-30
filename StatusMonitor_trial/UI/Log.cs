@@ -21,6 +21,7 @@ namespace StatusMonitor_trial
         public Log()
         {
             InitializeComponent();
+            PrinterService.PrinterStatusChanged += PrinterService_PrinterStatusChanged;
             statusButtons = new List<Button>
             {
                 btnRC1, btnRC2, btnRC3, btnRC4, btnRC5, btnRC6, btnRC7, btnRC8, btnRC9, btnRC10
@@ -46,7 +47,18 @@ namespace StatusMonitor_trial
                 UpdateLog(logEntry);
             }
         }
+        private void PrinterService_PrinterStatusChanged(object sender, PrinterInfo printer)
+        {
+            this.BeginInvoke((Action)(() => {
 
+                var button = statusButtons.FirstOrDefault(btn => btn.Tag?.ToString() == printer.Name);
+                if (button == null) return;
+
+                bool isConnected = PrinterService.GetConnection(printer.Name)?.IsConnected ?? false;
+
+                button.BackColor = isConnected ? Color.LightGreen : Color.LightGray;
+            }));
+        }
 
         private void UpdateLog(LogEntry logEntry)
         {
