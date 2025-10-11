@@ -52,17 +52,29 @@ Status Monitoring - Desktop application C#
 
 ## ตัวอย่าง (Example): 
 ### Login - page </br>
-<img width="600" height="600" alt="Screenshot 2025-08-31 220755" src="https://github.com/user-attachments/assets/5461283c-59a6-416f-b84f-9d108aa0aac7" /> </br>
+<img width="600" height="600" alt="Screenshot 2025-10-11 133531" src="https://github.com/user-attachments/assets/68557398-81cc-47e1-9b45-63755f84f0a8" /> </br>
 ### Operator - page </br>
-<img width="600" height="600" alt="Screenshot 2025-09-07 125619" src="https://github.com/user-attachments/assets/c36072e8-ff29-4dbb-ba3d-73f1a6f49667" /> </br>
+<img width="600" height="600" alt="Screenshot 2025-10-11 133650" src="https://github.com/user-attachments/assets/3708afc8-257a-4fb9-91a1-de3e1a438fab" /> </br>
+### Check Field - page </br>
+<img width="600" height="600" alt="Screenshot 2025-10-11 134119" src="https://github.com/user-attachments/assets/fa592e82-060a-4dde-908d-463c7398acfd" /> </br>
 ### TCP/IP - page </br>
-<img width="600" height="600" alt="Screenshot 2025-08-31 220835" src="https://github.com/user-attachments/assets/7ede3a45-ddcd-4896-a442-d5a2b9b1bde2" /> </br>
+<img width="600" height="600" alt="Screenshot 2025-10-11 134210" src="https://github.com/user-attachments/assets/861da877-4d1b-4907-a0cd-855bc24c11cf" /> </br>
 ### Register - page </br>
-<img width="600" height="600" alt="Screenshot 2025-08-31 220850" src="https://github.com/user-attachments/assets/60af6716-d457-4ea2-bea2-e25fda83f90f" /> </br>
+<img width="600" height="600" alt="Screenshot 2025-10-11 134223" src="https://github.com/user-attachments/assets/1f05e161-46dd-4232-b5b2-21e8a03ec9d6" /> </br>
 ### Setting - page </br>
-<img width="600" height="600" alt="Screenshot 2025-08-31 220904" src="https://github.com/user-attachments/assets/886757e9-15bf-42ce-bd64-fc406569e1fd" /> </br>
+<img width="600" height="600" alt="Screenshot 2025-10-11 134235" src="https://github.com/user-attachments/assets/ceb8903e-a073-4be6-8fdd-dbe068d9ce88" /> </br>
 ### Log - page </br>
-<img width="600" height="600" alt="Screenshot 2025-08-31 221008" src="https://github.com/user-attachments/assets/1265192f-f771-4272-a7de-0f34c944d712" /> </br>
+<img width="600" height="600" alt="Screenshot 2025-10-11 134255" src="https://github.com/user-attachments/assets/53c506c3-1972-4901-9a60-7c4f102a067a" /> </br>
+### Log File </br>
+<img width="600" height="600" alt="Screenshot 2025-10-11 134346" src="https://github.com/user-attachments/assets/6d117c49-4283-4236-97ca-d760899a53bc" /> </br>
+
+
+
+
+
+
+
+
 
 
 
